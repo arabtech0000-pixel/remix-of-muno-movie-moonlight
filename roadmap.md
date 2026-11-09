@@ -1,4 +1,5 @@
 # Tasks
+- [x] Clear copied Drizzle migrations and rescaffold an empty migration set for this project's database (journal empty, no SQL files; existing schema intact and untracked by Drizzle).
 - [ ] Fix the Vercel admin list failure and verify authenticated reads and non-admin denial; check app errors.
 - [x] Add uploaded Android ownership proof (local address returns HTTP 200; no signing secrets copied).
 - [ ] Deploy ownership proof to munomovies.vercel.app/.well-known/assetlinks.json (blocked: Vercel deployment outside this workspace; current public address returns 404).

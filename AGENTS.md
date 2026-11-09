@@ -22,3 +22,4 @@
 - Serve converter ownership proof from public/.well-known/assetlinks.json; never publish the converter's signing keystore or signing credentials.
 - Resolve admin menu visibility outside auth-state callbacks using has_role; protected admin server functions remain the authority for access.
 - Load admin member activity through the authenticated, admin-guarded database RPC so listing works without host service credentials; account mutations still require configured privileged server functions.
+- This project's database objects predate Drizzle and are not in its migration journal, so the migration set starts empty and every new migration must be additive-only: never recreate or drop an existing table, column, or function.
