@@ -1,0 +1,33 @@
+# Tasks
+- [ ] Fix the Vercel admin list failure and verify authenticated reads and non-admin denial; check app errors.
+- [x] Add uploaded Android ownership proof (local address returns HTTP 200; no signing secrets copied).
+- [ ] Deploy ownership proof to munomovies.vercel.app/.well-known/assetlinks.json (blocked: Vercel deployment outside this workspace; current public address returns 404).
+- [x] Verify designated admin access, real member list, refresh and recovery after connection failure; 34 actual accounts loaded, three tests passed.
+- [x] Fix the reported series error (build OK; 18 relevant tests passed; Android project generation and sync verified).
+- [ ] Produce and download the requested APK (blocked: no GitHub connection available; published app address currently returns Project not found).
+- [ ] Match series details to the Fallout reference and verify real episode playback/download actions.
+- [ ] Recheck Android packaging and downloadable GitHub artifact configuration (remote run requires connected repository).
+- [ ] Fix Cloud email/password sign-up and persistent sessions; leave viewing limits and payments inactive, preserving their code.
+- [ ] Verify playback and remove remaining Firebase account/admin dependencies.
+- [x] Add GitHub Actions Android APK artifacts and document setup requirements.
+- [ ] Move Firebase accounts, profiles and admin to this project's Lovable Cloud; preserve persistent sign-in.
+- [ ] Add Subscription to Menu and enforce 20 minutes per day across movies; paid-only downloads.
+- [ ] Connect Marz Pay securely and verify payment before activating subscriptions.
+- [ ] Improve sparse category presentation without inserting unrelated titles.
+- [x] Finish and verify shared home-screen install invitation matching the app.
+- [x] Make movie downloads deliver real files; verify Animals attachment and remove simulated offline claims.
+- [x] Add category rows after related movies on movie details.
+- [x] Connect official WhatsApp group and channel links.
+- [ ] Verify complete movie-page flow with Firebase sign-in (blocked: no signed-in test account available; isolated Save movie UI rendered, browser download event check timed out).
+- [ ] Verify native home-screen installation on the published site (blocked: app not published).
+- [x] Replace admin demo counts with real application data and secure admin access.
+- [ ] Connect the existing payment provider securely (blocked: which provider and its keys).
+- [ ] Enforce a shared 20-minute free viewing allowance, then require verified daily/weekly/monthly entitlement.
+- [x] Rebuild player and reference controls.
+- [x] Correct genres and VJ selection and test exact matching.
+- [x] Verify playback and category flows in the app.
+- [x] Compare provided movie server and improve feed/search reliability (retain working current source; provided dashboard/search require an access token).
+- [x] Keep browser navigation visible within the available viewport.
+- [x] Request landscape on player opening and restore on close (browser support required).
+- [x] Test search, navigation, and player orientation behavior.
+- [x] Sign-up: Firebase Google and email/password, Muno Movies logo, no email confirmation.

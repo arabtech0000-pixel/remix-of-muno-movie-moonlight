@@ -1,0 +1,87 @@
+name: Build Android APK
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      # GitHub's Ubuntu machines already include the Android SDK.
+      - name: Use built-in Android SDK
+        run: |
+          SDK="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          echo "ANDROID_HOME=$SDK" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK" >> "$GITHUB_ENV"
+          ls "$SDK"
+          yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+
+      # The Android app is only a native shell that opens the published site,
+      # so it is built in its own folder with just the Capacitor packages.
+      # This keeps the website's packages out of the APK build.
+      - name: Prepare Android shell project
+        run: |
+          set -e
+          mkdir -p apk-build
+          cp capacitor.config.json apk-build/
+          cp -r android-shell apk-build/
+          cd apk-build
+          cat > package.json <<'EOF'
+          {
+            "name": "munomovies-android",
+            "private": true,
+            "version": "1.0.0",
+            "dependencies": {
+              "@capacitor/android": "^7",
+              "@capacitor/cli": "^7",
+              "@capacitor/core": "^7"
+            }
+          }
+          EOF
+          npm install --no-audit --no-fund
+          npx cap add android
+          npx cap sync android
+
+      - name: Copy app icon
+        working-directory: apk-build
+        run: |
+          for d in mipmap-mdpi mipmap-hdpi mipmap-xhdpi mipmap-xxhdpi mipmap-xxxhdpi; do
+            mkdir -p android/app/src/main/res/$d
+            cp ../public/icons/app-192.png android/app/src/main/res/$d/ic_launcher.png
+            cp ../public/icons/app-192.png android/app/src/main/res/$d/ic_launcher_round.png
+            cp ../public/icons/app-192.png android/app/src/main/res/$d/ic_launcher_foreground.png
+          done
+          rm -rf android/app/src/main/res/mipmap-anydpi-v26
+
+      - name: Build APK
+        working-directory: apk-build/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Rename APK
+        run: |
+          test -s apk-build/android/app/build/outputs/apk/debug/app-debug.apk
+          cp apk-build/android/app/build/outputs/apk/debug/app-debug.apk MunoMovies.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MunoMovies-android-apk
+          path: MunoMovies.apk
+          if-no-files-found: error
+          retention-days: 30

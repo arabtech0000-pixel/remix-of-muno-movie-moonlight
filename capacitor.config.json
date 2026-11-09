@@ -1,0 +1,13 @@
+{
+  "appId": "com.munomovies.app",
+  "appName": "MunoMovies",
+  "webDir": "android-shell",
+  "server": {
+    "url": "https://muno-movie-moonlight.lovable.app",
+    "androidScheme": "https",
+    "cleartext": false
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}

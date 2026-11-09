@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.vercel.munomovies.twa",
+      "sha256_cert_fingerprints": ["06:77:EC:55:33:6E:AA:03:98:E0:48:B0:89:0B:A2:FD:94:88:C7:82:57:37:B0:78:57:34:21:9A:FA:B6:CF:A3"]
+    }
+  }
+]

@@ -1,0 +1,363 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.muno-account-theme {
+  --background: #05051f;
+  --foreground: #ffffff;
+  --card: #0c0c38;
+  --card-foreground: #ffffff;
+  --primary: #00d522;
+  --primary-foreground: #05051f;
+  --secondary: #171733;
+  --secondary-foreground: #ffffff;
+  --muted-foreground: #9292a5;
+  --input: #191931;
+  --border: #343448;
+  --accent: #24243c;
+  --accent-foreground: #ffffff;
+  --ring: #00d522;
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for horizontal poster carousels */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #030314;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* Smooth vertical scroll with accessible touch and indicator */
+:root {
+  --muno-shell-surface: oklch(0.1 0.025 280);
+  --muno-app-surface: oklch(0.13 0.05 280);
+  --muno-nav-border: oklch(1 0 0 / 6%);
+  --muno-nav-shadow: 0 -4px 20px oklch(0 0 0 / 50%);
+}
+.muno-shell {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  background: var(--muno-shell-surface);
+}
+.muno-phone { min-height: 0; background: var(--muno-app-surface); }
+.muno-install {
+  --background: var(--muno-app-surface);
+  --foreground: oklch(1 0 0);
+  --muted-foreground: oklch(0.75 0.02 280);
+  --primary: oklch(0.76 0.25 145);
+  --primary-foreground: var(--muno-app-surface);
+  --accent: oklch(1 0 0 / 10%);
+  --accent-foreground: var(--foreground);
+  --border: oklch(1 0 0 / 18%);
+  --ring: var(--primary);
+}
+.muno-download { --secondary: oklch(1 0 0); --secondary-foreground: var(--muno-app-surface); }
+aside.muno-install {
+  width: min(406px, calc(100% - 24px));
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  bottom: auto;
+}
+.muno-bottom-nav {
+  min-height: calc(64px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--muno-app-surface);
+  border-top: 1px solid var(--muno-nav-border);
+  box-shadow: var(--muno-nav-shadow);
+}
+.muno-bottom-nav button { height: 56px; border-radius: 0; }
+/* Desktop and large tablets: full-width app with navigation as a top bar. */
+@media (min-width: 1024px) {
+  .muno-phone { max-width: none !important; max-height: none !important; }
+  .muno-bottom-nav {
+    order: -1;
+    min-height: 60px;
+    padding: 0 max(24px, calc((100% - 1100px) / 2));
+    justify-content: center;
+    gap: 8px;
+    border-top: 0;
+    border-bottom: 1px solid var(--muno-nav-border);
+    box-shadow: none;
+  }
+  .muno-bottom-nav button { flex: 0 0 auto; flex-direction: row; gap: 8px; height: 60px; padding: 0 20px; }
+  .muno-bottom-nav button span { margin-top: 0; }
+  .scroll-container > * { max-width: 1280px; margin-inline: auto; }
+}
+.scroll-container button[data-slot="button"][aria-label="Cast"] { background: transparent; }
+.scroll-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 9999px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* The cinematic player uses its own semantic theme over the app shell. */
+.muno-player {
+  --player-surface: oklch(0 0 0);
+  --player-ink: oklch(1 0 0);
+  --player-action: oklch(0.76 0.25 145);
+  --player-glass: oklch(0.15 0 0 / 92%);
+  --player-hover: oklch(1 0 0 / 12%);
+  --player-track: oklch(1 0 0 / 32%);
+  background: var(--player-surface);
+  color: var(--player-ink);
+  height: 100dvh;
+  letter-spacing: 0;
+}
+.player-top { background: linear-gradient(to bottom, oklch(0 0 0 / 55%), transparent); }
+.player-bottom { background: linear-gradient(to top, oklch(0 0 0 / 60%), transparent); padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+.muno-player button { color: var(--player-ink); }
+.muno-player button:hover { background: transparent; opacity: 0.85; }
+.muno-player .player-icon svg { width: 26px; height: 26px; }
+.muno-player .player-play { width: 64px; height: 64px; }
+.muno-player .player-play svg { width: 40px; height: 40px; fill: currentColor; stroke-width: 0; }
+.muno-player .player-play .animate-spin { fill: none; stroke-width: 2; }
+.muno-player .player-play .animate-spin, .player-status { color: var(--player-action); }
+.muno-player .player-skip { width: 60px; height: 60px; position: relative; }
+.muno-player .player-skip svg { width: 46px; height: 46px; stroke-width: 1.6; }
+.player-skip span { position: absolute; font-size: 11px; font-weight: 600; top: 52%; }
+.muno-player .player-tool { display: flex; flex-direction: row; align-items: center; gap: 6px; height: 44px; padding: 4px 6px; font-size: 15px; font-weight: 500; }
+.muno-player .player-tool svg { width: 22px; height: 22px; }
+.player-timeline { -webkit-appearance: none; appearance: none; height: 22px; background: transparent; cursor: pointer; }
+.player-timeline::-webkit-slider-runnable-track { height: 3px; border-radius: 2px; background: linear-gradient(to right, var(--player-action) var(--pct, 0%), var(--player-track) var(--pct, 0%)); }
+.player-timeline::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5.5px; border-radius: 50%; background: var(--player-action); }
+.player-timeline::-moz-range-track { height: 3px; background: var(--player-track); }
+.player-timeline::-moz-range-progress { height: 3px; background: var(--player-action); }
+.player-timeline::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 50%; background: var(--player-action); }
+.player-speed, .player-error { background: var(--player-glass); }
+.muno-player .player-retry { background: var(--player-action); color: var(--player-surface); }
+@media (max-height: 480px) {
+  .player-top { padding-top: 8px; padding-bottom: 8px; }
+  .player-bottom { padding-top: 8px; padding-bottom: 6px; }
+  .muno-player .player-tool { height: 44px; font-size: 11px; }
+  .muno-player .player-related { margin-top: 0; height: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .muno-player .animate-spin { animation-duration: 2s; }
+}
+
+.muno-player .player-top, .muno-player .player-bottom, .muno-player .player-play { transition: opacity .3s ease; }
+.muno-player.controls-hidden { cursor: none; }
+.muno-player.controls-hidden .player-top, .muno-player.controls-hidden .player-bottom, .muno-player.controls-hidden .player-play { opacity: 0; pointer-events: none; }
+
+/* Desktop: cinematic, roomy layout; phones keep their original look. */
+@media (min-width: 1024px) {
+  .scroll-container .grid.grid-cols-3 { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 22px; }
+  .scroll-container .grid.grid-cols-3 img { border-radius: 10px; transition: transform .25s ease, box-shadow .25s ease; }
+  .scroll-container .grid.grid-cols-3 > *:hover img { transform: scale(1.04); box-shadow: 0 18px 40px -12px oklch(0 0 0 / 70%); }
+  .muno-detail { display: grid; grid-template-columns: minmax(280px, 360px) 1fr; column-gap: 48px; padding-inline: 32px; }
+  .muno-detail > * { grid-column: 1 / -1; }
+  .muno-detail > .muno-detail-hero { grid-column: 1; padding-top: 32px; background: none; }
+  .muno-detail > .muno-detail-hero > div:first-child { width: 100%; border-radius: 14px; }
+  .muno-detail > .muno-detail-info { grid-column: 2; padding-top: 40px; max-width: 760px; }
+  .muno-detail-info h1 { text-align: left; font-size: 40px; line-height: 1.1; }
+  .muno-detail-info h1 + div, .muno-detail-info > div:nth-of-type(2) { justify-content: flex-start; }
+  .muno-detail-info p { font-size: 15px; }
+  .muno-detail-info > div:last-child { justify-content: flex-start; gap: 40px; border: 0; padding-inline: 0; }
+}
