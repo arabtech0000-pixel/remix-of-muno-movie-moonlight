@@ -1,4 +1,7 @@
 # Tasks
+- [x] Reserve phone status-bar space; browser layout checked and Android shell margins configured (physical installed-app verification requires rebuilt APK).
+- [x] Verify Cloud password login, keep user profiles, create signup profile trigger, and configure the requested admin account; signed-in dashboard loads the account as Admin.
+- [ ] Hide Edit with Lovable badge (blocked: editor access on Pro plan or higher required).
 - [x] Clear copied Drizzle migrations and rescaffold an empty migration set for this project's database (journal empty, no SQL files; existing schema intact and untracked by Drizzle).
 - [ ] Fix the Vercel admin list failure and verify authenticated reads and non-admin denial; check app errors.
 - [x] Add uploaded Android ownership proof (local address returns HTTP 200; no signing secrets copied).

@@ -12,7 +12,7 @@ interface LoginScreenProps {
   isFirstLaunch?: boolean;
 }
 
-// Email/password sign-in only, with no email confirmation step.
+// Cloud email/password sign-in; auth state owns the signed-in transition.
 export const LoginScreen: React.FC<LoginScreenProps> = ({ onBack, isFirstLaunch = false }) => {
   const [mode, setMode] = useState<'register' | 'login' | 'forgot'>('register');
   const [email, setEmail] = useState('');
