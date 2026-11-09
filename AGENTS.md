@@ -14,6 +14,7 @@
 - The player owns its media lifecycle per movie and uses HLS.js for HLS streams; shared pure helpers handle bounded seeking.
 - Player presentation starts from the Watch gesture and restores only fullscreen/orientation it acquired, so unsupported browsers still retain working controls.
 - The phone shell is viewport-bound with a nonshrinking safe-area navigation row, preventing browser chrome from clipping navigation.
+- Reserve the top and horizontal safe areas at the shared phone shell; the native Android shell forces edge-to-edge margins so system bars do not overlap web controls.
 - Search merges matching loaded catalog rows with hydrated upstream results by movie ID; upstream failures are distinct from zero matches and requests are abortable.
 - Movie CDN (b-cdn.net) returns 403 for any Referer header; the app sends no-referrer (root referrer meta) so streams play.
 - Home-screen installation is manifest-only with one shared invitation; use browser install events and manual platform guidance without app-shell service workers to keep previews and streaming uncached.
