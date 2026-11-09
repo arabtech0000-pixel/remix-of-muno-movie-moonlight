@@ -1,0 +1,1 @@
+CREATE TRIGGER muno_create_member_profile AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION public.create_member_profile();

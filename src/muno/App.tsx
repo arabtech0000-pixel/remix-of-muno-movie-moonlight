@@ -36,6 +36,7 @@ import { openBrowserPlayerLandscape } from './services/playerPresentation';
 import { MovieDownloadDialog } from './components/common/MovieDownloadDialog';
 import { supabase } from '@/integrations/supabase/client';
 import { isSeriesMovie, nextSeriesEpisode } from './services/seriesEpisodes';
+import { loadMemberProfile, saveMemberProfile } from './services/profiles';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -71,6 +72,17 @@ export default function App() {
     }
     return () => { disposed = true; };
   }, [sessionUserId]);
+  React.useEffect(() => {
+    let disposed = false;
+    if (sessionUserId) {
+      void loadMemberProfile(sessionUserId).then(profile => {
+        if (disposed) return;
+        setUserName(profile.display_name);
+        setUserAvatar(profile.avatar_url);
+      }).catch(() => { if (!disposed) setToastMessage('Profile could not be loaded.'); });
+    }
+    return () => { disposed = true; };
+  }, [sessionUserId]);
   const signOut = () => { void supabase.auth.signOut(); setIsAuthenticated(false); setIsAdmin(false); setActiveScreen('login'); };
   const [currentTab, setCurrentTab] = useState<ActiveTab>('home');
   const [heroMovies, setHeroMovies] = useState<Movie[]>([]);
@@ -98,9 +110,9 @@ export default function App() {
   React.useEffect(() => () => { restorePlayerPresentation.current?.(); }, []);
 
   const handleUpdateProfile = async (name: string, avatar: string) => {
+    if (!sessionUserId) return;
     try {
-      const fb = await import('./services/firebase');
-      await fb.updateProfileData(name, avatar);
+      await saveMemberProfile(sessionUserId, name, avatar);
       setUserName(name); setUserAvatar(avatar);
     } catch { showToast('Profile could not be saved.'); }
   };
