@@ -27,7 +27,7 @@ export const listAdminUsers = createServerFn({ method: 'POST' })
 
 export const changeAdminUser = createServerFn({ method: 'POST' })
   .middleware([requireSupabaseAuth])
-  .inputValidator(z.object({ userId: z.string().uuid(), action: z.enum(['enable', 'disable', 'delete']) }))
+  .validator(z.object({ userId: z.string().uuid(), action: z.enum(['enable', 'disable', 'delete']) }))
   .handler(async ({ context, data }) => {
     const { data: allowed, error } = await context.supabase.rpc('has_role', { _user_id: context.userId, _role: 'admin' });
     if (error || !allowed) throw new Error('Admin access required');
